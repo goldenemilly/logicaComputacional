@@ -1,5 +1,6 @@
 # Lógica Computacional
-Práctica 0 
+Práctica 1: Introducción a Haskell
+
 Integrantes de equipo: 
 
 Luna Villanueva Karla Victoria 
