@@ -22,7 +22,7 @@ perimeter (Trapeze b1 b2 h) = b1 + b2 + 2 * sqrt (h^2 + ((b2 - b1) / 2)^2)
 
 instance Eq Shape where
     s1 == s2 = area s1 == area s2
-
+-- Instancia de la clase Ord, donde el criterio de comparación es el área de las figuras.
 instance Ord Shape where
     compare s1 s2 = compare (area s1) (area s2)
     
@@ -40,7 +40,7 @@ data Haskellium = Haskellium {nombre :: String, apellido1 :: String, apellido2 :
 son :: Haskellium -> Haskellium -> String -> Haskellium
 son padre madre nombre1 = Haskellium {nombre = nombre1, apellido1 = apellido1 padre, apellido2 = apellido1 madre, lugar= lugar madre, casa = casa madre}
 
--- 
+-- Dado un Haskellium, se calcula el tiempo en unidades t, que le cuesta llegar a su trabajo.
 timeToWork :: Haskellium -> Float
 timeToWork dude = 
     let distance = from0  (lugar dude)
@@ -51,6 +51,7 @@ timeToWork dude =
 part1 = (Haskellium {nombre = "ade", apellido1 ="non", apellido2="om", lugar= (10, 12), casa = Circle 7} )
 part2 = (Haskellium {nombre = "adeade", apellido1 ="nonnon", apellido2="omom", lugar= (5000, 12000), casa = Circle 9} )
 
+-- Dado un Haskellium, calcula las unidades necesarias para construir su casa, contemplando las paredes y el techo.
 houseCost :: Haskellium -> Float
 houseCost ricardo = (perimeter (casa ricardo) * 2.5) + area (casa ricardo)
 
