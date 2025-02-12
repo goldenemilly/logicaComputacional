@@ -48,22 +48,22 @@ houseCost ricardo = (perimeter (casa ricardo) * 2.5) + area (casa ricardo)
 
 -- Listas y Funciones
 
---Función isPal, indica si dada una cadena de texto es o no un palindromo.
+--Función isPal: Indica si dada una cadena de texto es o no un palindromo.
 isPal :: String -> Bool
 isPal s = s == reversaFr s
 
---Función concat' (recursiva), dada una lista de listas regresa la concatenación de todas las listas contenidas por esta.
+--Función concat' (recursiva): Dada una lista de listas regresa la concatenación de todas las listas contenidas por esta.
 concat' :: [[a]] -> [a]
 concat' [] = []
 concat' (x:xs) = x ++ concat' xs 
 
---Función pascalN, regresa la n-ésima fila del triángulo de Pascal.
+--Función pascalN: Regresa la n-ésima fila del triángulo de Pascal.
 pascalN :: Int -> [Int]
 pascalN 0 = [1]
 pascalN n = zipWith (+) ([0] ++ prev) (prev ++ [0])
   where prev = pascalN (n - 1)
 
---Función reversaFr, dada una lista, regresa la lista con los mismos elementos pero en orden opuesto.
+--Función reversaFr: Dada una lista, regresa la lista con los mismos elementos pero en orden opuesto.
 reversaFr :: [a] -> [a]
 reversaFr xs = foldr (\x acc -> acc++[x]) [] xs
 
