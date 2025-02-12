@@ -1,6 +1,7 @@
 import System.Console.Terminfo hiding (Point)
 import qualified Distribution.SPDX as SPDX
-
+-- Tipos de datos Algebraicos.
+-- Tipo de dato llamado Shape que representa a las figuras geométricas.
 data Shape = Circle Float | Square Float | Rectangle Float Float | Triangle Float| Trapeze Float Float Float deriving (Show)
 
 area :: Shape -> Float
@@ -45,21 +46,26 @@ part2 = (Haskellium {nombre = "adeade", apellido1 ="nonnon", apellido2="omom", l
 houseCost :: Haskellium -> Float
 houseCost ricardo = (perimeter (casa ricardo) * 2.5) + area (casa ricardo)
 
-reverseFr :: [a] -> [a]
-reverseFr [] = []
-reverseFr (x:xs) = reverseFr xs ++ [x]
+-- Listas y Funciones
 
+--Función isPal, indica si dada una cadena de texto es o no un palindromo.
 isPal :: String -> Bool
-isPal s = s == reverseFr s
+isPal s = s == reversaFr s
 
+--Función concat' (recursiva), dada una lista de listas regresa la concatenación de todas las listas contenidas por esta.
 concat' :: [[a]] -> [a]
 concat' [] = []
 concat' (x:xs) = x ++ concat' xs 
 
+--Función pascalN, regresa la n-ésima fila del triángulo de Pascal.
 pascalN :: Int -> [Int]
 pascalN 0 = [1]
 pascalN n = zipWith (+) ([0] ++ prev) (prev ++ [0])
   where prev = pascalN (n - 1)
+
+--Función reversaFr, dada una lista, regresa la lista con los mismos elementos pero en orden opuesto.
+reversaFr :: [a] -> [a]
+reversaFr xs = foldr (\x acc -> acc++[x]) [] xs
 
 -- Árboles 
 
