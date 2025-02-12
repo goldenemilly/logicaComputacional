@@ -1,12 +1,15 @@
 import System.Console.Terminfo hiding (Point)
 import qualified Distribution.SPDX as SPDX
+
 data Shape = Circle Float | Square Float | Rectangle Float Float | Triangle Float| Trapeze Float Float Float deriving (Show)
+
 area :: Shape -> Float
 area (Circle r) = pi * r^2
 area (Square l) = l^2
 area (Rectangle b h) = b * h
 area (Triangle l) = (l^2) * sqrt 3 / 4
 area (Trapeze b1 b2 h) = (b1 + b2) * h / 2
+
 perimeter :: Shape -> Float
 perimeter (Circle r) = 2 * pi * r
 perimeter (Square l) = 4 * l
@@ -57,3 +60,23 @@ pascalN :: Int -> [Int]
 pascalN 0 = [1]
 pascalN n = zipWith (+) ([0] ++ prev) (prev ++ [0])
   where prev = pascalN (n - 1)
+
+
+
+data OneTwoTree a = Void
+                  | Node a (OneTwoTree a)
+                  | Branch a (OneTwoTree a) (OneTwoTree a)
+                  deriving (Show, Eq)
+
+suma :: OneTwoTree Int -> Int 
+suma Void = 0
+suma (Node a hijo) = a + (suma hijo)
+suma (Branch a sub1 sub2) = a + (suma sub1) +  (suma sub2)
+
+sinCero :: OneTwoTree Int -> Bool
+sinCero Void = True
+sinCero (Node a hijo) = (a /= 0) && (sinCero hijo) 
+sinCero (Branch a sub1 sub2) = (a /= 0) && (sinCero sub1) && (sinCero sub2)
+
+
+
