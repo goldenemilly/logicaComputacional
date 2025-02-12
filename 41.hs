@@ -61,22 +61,26 @@ pascalN 0 = [1]
 pascalN n = zipWith (+) ([0] ++ prev) (prev ++ [0])
   where prev = pascalN (n - 1)
 
+-- Árboles 
 
-
+-- Tipo de dato algebraico OneTwoTree a.
 data OneTwoTree a = Void
                   | Node a (OneTwoTree a)
                   | Branch a (OneTwoTree a) (OneTwoTree a)
                   deriving (Show, Eq)
 
+-- Función suma: Regresa la suma de todos los elementos del árbol.
 suma :: OneTwoTree Int -> Int 
 suma Void = 0
 suma (Node a hijo) = a + (suma hijo)
 suma (Branch a sub1 sub2) = a + (suma sub1) +  (suma sub2)
 
+-- Función sinCero: Devuelve True si no hay ningún 0 en el árbol.
 sinCero :: OneTwoTree Int -> Bool
 sinCero Void = True
 sinCero (Node a hijo) = (a /= 0) && (sinCero hijo) 
 sinCero (Branch a sub1 sub2) = (a /= 0) && (sinCero sub1) && (sinCero sub2)
+
 
 
 
