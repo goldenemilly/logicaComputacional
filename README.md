@@ -8,3 +8,5 @@ Labrador Mata Janet
 Luna Villanueva Karla Victoria 
 
 Mociño Navarrete Naomi Yatana
+
+Leon Navarrete Adam Edmundo
